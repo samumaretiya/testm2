@@ -1,0 +1,69 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "New Product Enquiry at "}}{{config path="general/store_information/name"}} @-->
+<!--@vars {
+"var comment":"Comment",
+"var email":"Customer Email",
+"var name":"Customer Name",
+"var subject":"Subject"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+                    
+
+  <table cellpadding="0" cellspacing="0" border="0" class="enquire_form_detail" style="width:100%">
+    <tr><td><h2  style="text-align:center;">Customer Details</h2></td></tr>
+    <tr>
+        <td>
+			<table border="1" style="width:100%">				
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Product Name</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var product_name}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Product Code</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var product_code}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Name</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var name}}</td>
+				</tr>
+				
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Email</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var email}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Country</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var country}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>State</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var region}}</td>
+				</tr>
+				{{if postcode}}
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Postcode</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var postcode}}</td>
+				</tr>
+				{{/if}}
+				{{if telephone}}
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Telephone</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var telephone}}</td>
+				</tr>
+				{{/if}}
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Comment</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var comment}}</td>
+				</tr>			
+			</table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

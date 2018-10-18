@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Contact Us</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Contact Us</item>
+                    <item name="label" xsi:type="string">Contact Us</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <!-- <referenceContainer name="page.messages">
+			<block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Magento_Theme::messages.phtml"/>
+        </referenceContainer> -->
+        
+        <referenceContainer name="content">
+			<block class="Digital\Contactus\Block\Contactus" name="contactus.form" template="Digital_Contactus::contact-form.phtml" after="main.content" cacheable="false">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,53 @@
+
+<?php
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$requestInterface = $objectManager->get('Magento\Framework\App\RequestInterface');
+$routeName      = $requestInterface->getRouteName();
+$moduleName     = $requestInterface->getModuleName(); 
+$controllerName = $requestInterface->getControllerName(); 
+$actionName     = $requestInterface->getActionName();
+if($routeName == 'cms' &&  $controllerName == 'index')
+{}
+else
+{
+?>
+<div class="home-newsletter-main-section">
+	<div class="container">
+  <div class="home-newsletter-section">
+    <div class="block newsletter">
+      <div class="content">
+        <form class="form subscribe"
+					novalidate
+					action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+					method="post"
+					data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+					id="newsletter-validate-detail">
+          <h2 class="home-newsletter-title">
+            <?php /* @escapeNotVerified */ echo __("Newsletter SignUp") ?>
+          </h2>
+          <p class="home-newsletter-text">
+            <?php /* @escapeNotVerified */ echo __('River cruises are a highly versatile activity that boasts mass appeal. From a romantic date with a <br/> loved one or social gatherings with friends and workplace Christmas parties.') ?>
+          </p>
+          <div class="field newsletter">
+            <div class="inputbox-main">
+              <div class="input-box first-name">
+                <input maxlength="100" name="first_name" type="text" id="first_name"
+										placeholder="<?php /* @escapeNotVerified */ echo __('Name') ?>"
+										data-validate="{required:true}"/>
+              </div>
+              <div class="input-box control email">
+                <input maxlength="100" name="email" type="email" id="newsletter"
+										placeholder="<?php /* @escapeNotVerified */ echo __('Email') ?>"
+										data-validate="{required:true, 'validate-email':true}"/>
+              </div>
+            </div>
+            <button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Subscribe') ?>" type="submit"> <span>Subscribe</span> </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+		</div>
+</div>
+<?php } ?>

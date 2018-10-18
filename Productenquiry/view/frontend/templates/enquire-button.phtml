@@ -1,0 +1,39 @@
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product_id = $this->getCurrentProductId();
+$product = $objectManager->get('Magento\Catalog\Model\Product')->load($product_id);
+?>
+
+
+<?php if ($block->isEnabledModule() &&  $product->getIsEnquire()=='1') { ?>
+
+  <a product-name="<?php echo $this->getCurrentProductName() ?>" product-sku="<?php echo $this->getCurrentProductSku() ?>" aria-label="<?= $block->escapeHtml(__('Enquire Now')) ?>" id="enquire-btn_<?php echo $product_id ?>" class="action toenquiry primary" title="<?php echo __("Enquire Now"); ?>">
+    <span>
+      <?php echo __("Enquire Now"); ?>
+    </span>
+  </a>
+
+
+  <script type="text/javascript">
+	  // <![CDATA[
+                              require([
+                                "jquery",
+                                 "jquery/ui",
+                                 'Magento_Ui/js/modal/modal'
+                                ], function($){    
+                                  $("#enquire-btn_<?php echo $product_id ?>").on('touchend click',function(e){
+                                //  $("#enquire-btn_<?php echo $product_id ?>").click(function () {
+                                       var proName = '';
+                                       var proSku = '';
+                                       var proName = $(this).attr('product-name');
+                                       var proSku = $(this).attr('product-sku');  
+                                       $('#productenquiry-form #productname').attr('value', proName);  
+                                       $('#productenquiry-form #product_code').attr('value', proSku);
+                                        $("#popup-mpdal").modal("openModal");
+                                  });
+                              });
+	  //]]!>
+                            </script>
+
+
+<?php } ?>
+

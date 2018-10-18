@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="sales_order_columns">
+        <column name="adults" class="Digital\Miscellaneous\Ui\Component\Listing\Column\Adults">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Adults</item>
+                </item>
+            </argument>
+        </column>
+		<column name="cruisename" class="Digital\Miscellaneous\Ui\Component\Listing\Column\Cruisename">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Cruisename</item>
+                </item>
+            </argument>
+        </column>
+		<column name="bookingdate" class="Digital\Miscellaneous\Ui\Component\Listing\Column\Bookingdate">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Booking Date</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Digital_Productenquiry::main" title="Manage Product Enquiries" module="Digital_Productenquiry" sortOrder="35" resource="Digital_Productenquiry::main" parent="Zdcs_Digital::23Digital"/>
+		
+        <add id="Digital_Productenquiry::parent" title="Manage Product Enquiries" module="Digital_Productenquiry" sortOrder="37" resource="Digital_Productenquiry::parent"  parent="Zdcs_Digital::23Digital" />
+		<add id="Digital_Productenquiry::productenquiry" title="Product Enquiries" module="Digital_Productenquiry" sortOrder="60" parent="Digital_Productenquiry::parent" action="productenquiry/index" resource="Digital_Productenquiry::productenquiry"/>
+		<add id="Digital_Productenquiry::settings" title="Settings" module="Digital_Productenquiry" sortOrder="60" parent="Digital_Productenquiry::parent" resource="Digital_Productenquiry::settings" action="adminhtml/system_config/edit/section/productenquiry" />
+		
+    </menu>
+</config>

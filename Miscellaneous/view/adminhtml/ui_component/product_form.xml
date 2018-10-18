@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="product-details">
+        <field name="blocked_dates" sortOrder="300" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Digital\Miscellaneous\Model\Blockoutdate\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">block</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>select</dataType>
+                <label translate="true">Blocked Date</label>
+                <dataScope>blocked_dates</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,203 @@
+<?php if ($block->isEnabledModule()) { ?>
+<?php
+	$helper = $this->getHelper();
+	$sitekey = $helper->Sitekey();
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$fileSystem = $objectManager->create('\Magento\Framework\Filesystem');
+	$mediaPath = $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                    ->getStore()
+                    ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+?>
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBT-TROPCxBNKnl5O3mgEcj-Z8JarMXiVY'></script>
+<div class="contact_blocks">
+  <div class="container">
+    <div class="address-main">
+      <h2>Departure Points</h2>
+      <div class="address-boxes">
+        <div class="boxes-cont">
+          <div class="contactus-map">
+			<?php echo '<img src="'.$mediaPath.'map-img1.jpg" alt="Melbourne River Cruises" title="Melbourne River Cruises" />'; ?>
+          </div>
+          <div class="address-wrapper">
+            <h3>Melbourne River Cruises</h3>
+            <p class="address"><b>Address:</b> <span>Vault 11, Banana Alley 365 Finders<br>
+              Street Melbourne VIC 3000</span></p>
+            <p class="phone"><b>Phone:</b> <a title="03 8610 2600" href="tel:03 8610 2600">03 8610 2600</a></p>
+            <p class="email"><b>Email:</b> <a title="info@melbcruises.com.au" href="mailto:info@melbcruises.com.au">info@melbcruises.com.au</a></p>
+            <div class="find-our-location"><a href="https://goo.gl/maps/7ZX2Kp49qju" target="_blank"><span>Find Our Location</span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="address-boxes">
+        <div class="boxes-cont">
+          <div class="contactus-map">
+            <?php echo '<img src="'.$mediaPath.'map-img2.jpg" alt="Spirit of Melbourne" title="Spirit of Melbourne" />'; ?>
+          </div>
+          <div class="address-wrapper">
+            <h3>Spirit of Melbourne</h3>
+            <p class="address"><b>Address:</b> <span>Berth 3,Southbank Promenade,<br>
+              Southbank VIC 3000</span></p>
+            <p class="phone"><b>Phone:</b> <a title="03 8610 2600" href="tel:03 8610 2600">03 8610 2600</a></p>
+            <p class="email"><b>Email:</b> <a title="info@melbcruises.com.au" href="mailto:info@melbcruises.com.au">info@melbcruises.com.au</a></p>
+            <div class="find-our-location"><a href="https://goo.gl/maps/EFJzWa3bUx82" target="_blank"><span>Find Our Location</span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="address-boxes">
+        <div class="boxes-cont">
+          <div class="contactus-map">
+           <?php echo '<img src="'.$mediaPath.'map-img3.jpg" alt="Sightseeing & Cruises" title="Sightseeing & Cruises" />'; ?>
+          </div>
+          <div class="address-wrapper">
+            <h3>Sightseeing & Cruises</h3>
+            <p class="address"><b>Address:</b> <span>erth 3,Southbank Promenade,<br>
+              Southbank VIC 3000</span></p>
+            <p class="phone"><b>Phone:</b> <a title="03 8610 2600" href="tel:03 8610 2600">03 8610 2600</a></p>
+            <p class="email"><b>Email:</b> <a title="info@melbcruises.com.au" href="mailto:info@melbcruises.com.au">info@melbcruises.com.au</a></p>
+            <div class="find-our-location"><a href="https://goo.gl/maps/EFJzWa3bUx82" target="_blank"><span>Find Our Location</span></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contact-form-wrap">
+  <div class="container">
+    <h3>DROP US A LINE</h3>
+    <p>River cruises are a highly versatile activity that boasts mass appeal. From a romantic date with<br>a loved one or social gatherings with friends and workplace Christmas partie</p>
+    <form class="form contact_us"
+      action="<?php echo $this->getBaseUrl().'contact-us/index/post';?>"
+      id="contact-form"
+      method="post"
+      data-mage-init='{"validation":{}}'>
+      <fieldset class="fieldset">
+        <div class="contact-box">
+          <div class="field name required">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="name"><span><?= $block->escapeHtml(__('First Name')) ?><sup>*</sup></span></label><?php */?>
+              <div class="control">
+                <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('First Name')) ?>" value="" class="input-text" type="text" data-validate="{required:true}" maxlength="100" placeholder="First Name"/>
+              </div>
+            </div>
+          </div>
+          <div class="field name required">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="last_name"><span><?= $block->escapeHtml(__('Last Name')) ?><sup>*</sup></span></label><?php */?>
+              <div class="control">
+                <input name="last_name" id="last_name" title="<?= $block->escapeHtmlAttr(__('Last Name')) ?>" value="" class="input-text" type="text" data-validate="{required:true}" maxlength="100" placeholder="Last Name"/>
+              </div>
+            </div>
+          </div>
+          <div class="field email required">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?><sup>*</sup></span></label><?php */?>
+              <div class="control">
+                <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" maxlength="75" placeholder="Email"/>
+              </div>
+            </div>
+          </div>
+          <div class="field contact">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="contact"><span><?= $block->escapeHtml(__('Contact No.')) ?></span></label><?php */?>
+              <div class="control">
+                <input name="contact" id="contact" title="<?= $block->escapeHtmlAttr(__('Contact No.')) ?>" value="" class="input-text" type="text" maxlength="20" placeholder="Contact No."/>
+              </div>
+            </div>
+          </div>
+          <div class="field enquiry_type">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="enquiry_type"><span><?= $block->escapeHtml(__('Enquiry Type')) ?></span></label><?php */?>
+              <div class="control">
+                <select name="enquiry_type" id="enquiry_type" title="<?= $block->escapeHtmlAttr(__('Enquiry Type')) ?>">
+                  <option value=""><?php echo __('----Select Enquiry Type---'); ?></option>
+                  <option value="<?php echo __('Sightseeing & WilliamstownCruises'); ?>"><?php echo __('Sightseeing & WilliamstownCruises'); ?></option>
+                  <option value="<?php echo __('Cruising Restaurant'); ?>"><?php echo __('Cruising Restaurant'); ?></option>
+                  <option value="<?php echo __('EventsDays'); ?>"><?php echo __('EventsDays'); ?></option>
+                  <option value="<?php echo __('Private Functions'); ?>"><?php echo __('Private Functions'); ?></option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field occasion">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="occasion"><span><?= $block->escapeHtml(__('Occasion')) ?></span></label><?php */?>
+              <div class="control">
+                <input name="occasion" id="occasion" title="<?= $block->escapeHtmlAttr(__('Occasion')) ?>" value="" class="input-text" type="text" maxlength="100" placeholder="Occasion"/>
+              </div>
+            </div>
+          </div>
+          <!--<div class="field comment required">
+            <div class="field-inner">
+              <?php /*?><label class="label" for="message"><span><?= $block->escapeHtml(__('Comment')) ?></span></label><?php */?>
+              <div class="control">
+                <textarea name="message" id="message" title="<?= $block->escapeHtmlAttr(__('Comment')) ?>" class="input-text" cols="5" rows="3" maxlength="1000" placeholder="Comment"></textarea>
+              </div>
+            </div>
+          </div>-->
+          <?php /*<div class="field receive_newsletter">	
+                <div class="field-inner">
+                    <div class="control">	
+                        <div class="check-box-wrap">
+                            <input name="receive_newsletter" id="receive_newsletter" title="<?php  echo __('I agree to receive newsletters from Melbourne River Cruises') ?>" value="1" class="checkbox" type="checkbox" />
+                            <label for="receive_newsletter" class="checkbox"><?php echo __('I agree to receive newsletters from Melbourne River Cruises') ?></label>
+                        </div>
+                    
+                    </div>
+			     </div>
+            </div>	*/ ?>
+          <div class="field captcha">
+            <div class="gcaptcha_wrap">
+              <div class="g-recaptcha" data-sitekey="<?php echo $sitekey; ?>"></div>
+              <div class="recaptcha-error-message validation-advice" style="display:none;" >
+                <?php /* @escapeNotVerified */ echo __('Please verify that you are not a robot.') ?>
+              </div>
+            </div>
+          </div>
+          <div class="field required">
+            <div class="field-inner">
+              <div class="primary">
+                <p>
+                  <?= $block->escapeHtmlAttr(__('(*) Required Fields')) ?>
+                </p>
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit Enquiry')) ?>" class="action submit primary"> <span>
+                <?= $block->escapeHtml(__('Submit Enquiry')) ?>
+                </span> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script src='https://www.google.com/recaptcha/api.js'></script> 
+<script type="text/javascript">// <![CDATA[
+ require([
+		'jquery',
+	], function($) {
+		$(document).ready(function() {
+			jQuery("#contact-form").submit(function(event) {
+				var response = grecaptcha.getResponse();
+				if (response.length == 0) {
+					jQuery('.recaptcha-error-message').show();
+					return false;
+				} else {
+					jQuery('.recaptcha-error-message').hide();
+				}
+			});
+			var onSuccess = function(response) {
+				var errorDivs = document.getElementsByClassName("recaptcha-error");
+				if (errorDivs.length) {
+					errorDivs[0].className = "";
+				}
+				var errorMsgs = document.getElementsByClassName("recaptcha-error-message");
+				if (errorMsgs.length) {
+					errorMsgs[0].parentNode.removeChild(errorMsgs[0]);
+				}
+			};
+		});
+	});
+//]]!>
+</script>
+<?php } ?>

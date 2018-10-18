@@ -1,0 +1,200 @@
+<?php 
+   
+    $product_name = $this->getCurrentProductName();
+    $product_code = $this->getCurrentProductSku(); 
+    $cust_name = $this->getCustomerName(); 
+    $cust_email = $this->getCustomerEmail(); 
+
+	$helper_contact_us = $this->helper('Digital\Contactus\Helper\Data');
+	$sitekey = $helper_contact_us->Sitekey();
+?>
+
+
+<div class="row"  id="popup-mpdal" style="display:none;">
+	<?php /* <script src='https://www.google.com/recaptcha/api.js'></script> */ ?>
+	
+<form class="form productenquiry"
+      action="<?php echo $block->getFormAction() ?>"
+      id="productenquiry-form"
+      method="post"
+      data-hasrequired="<?php  echo ('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <?php /*<legend class="legend"><span><?php echo ('Make an Enquiry') ?></span></legend><br />*/ ?>
+      
+         <div class="field productname">
+            <div class="control">
+              <label class="label" for="product_name"><span><?php  echo ('Product Name') ?></span></label>
+                <input  name="productname" id="productname" title="<?php  echo ('Product Name') ?>" value="<?php echo $product_name; ?>" class="input-text" type="text" data-validate="{required:true}" readonly=""/>
+            </div>
+        </div>
+
+        <div class="field product_code">
+           <div class="control">
+            <label class="label" for="product_code"><span><?php  echo ('Product SKU') ?></span></label>
+            <input name="productsku" id="product_code" title="<?php /* @escapeNotVerified */ echo ('Product SKU') ?>" value="<?php echo $product_code; ?>" class="input-text" type="text" data-validate="{required:true}" readonly=""/>
+            </div>
+          </div>      
+
+         <div class="field first_name required">
+            <div class="control">
+              <label class="label" for="name"><span><?php echo ('First Name') ?></span></label><span class="required"></span>
+                <input maxlength="100"  name="name" id="name" title="<?php  echo ('First Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+		
+		<div class="field last_name required">
+            <div class="control">
+              <label class="label" for="last_name"><span><?php echo ('Last Name') ?></span></label><span class="required"></span>
+                <input maxlength="100"  name="last_name" id="last_name" title="<?php  echo ('Last Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+		
+		<div class="field telephone required">
+            <div class="control">
+              <label class="label" for="telephone"><span><?php  echo ('Contact No') ?></span></label><span class="required"></span>
+                <input maxlength="20"  name="telephone" id="telephone" title="<?php  echo ('Contact No') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+
+        <div class="field email required">
+            <div class="control">
+              <label class="label" for="email"><span><?php echo ('Email') ?></span></label><span class="required"></span>
+                <input maxlength="75"  name="email" id="email" title="<?php echo ('Email') ?>" value="" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+		
+		
+		<div class="field expecteddate required">
+            <div class="control">
+              <label class="label" for="expecteddate"><span><?php  echo ('Expected Date') ?></span></label><span class="required"></span>
+                <input maxlength="50"  name="expecteddate" id="expecteddate" title="<?php  echo ('Expected Date') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+        
+
+        <div class="field expected_people required">
+            <div class="control">
+              <label class="label" for="expected_people"><span><?php  echo ('Expected No. of People') ?></span></label><span class="required"></span>
+                <input maxlength="5"  name="expected_people" id="expected_people" title="<?php  echo ('Expected No. of People') ?>" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div> 
+		
+		<div class="field occasion">
+            <div class="control">
+              <label class="label" for="occasion"><span><?php  echo ('Occasion') ?></span></label>
+                <input maxlength="200"  name="occasion" id="occasion" title="<?php  echo ('Occasion') ?>" value="" class="input-text" type="text"  />
+            </div>
+        </div> 
+
+       
+
+        <div class="field comment">
+            
+            <div class="control">
+              <label class="label" for="comment"><span><?php echo ('Comment') ?></span></label>              
+                <textarea maxlength="1000" name="comment" id="comment" title="<?php echo ('Comment') ?>" class="input-text" cols="5" rows="3"></textarea>
+            </div>
+        </div>
+
+         
+         <?php //if($block->isCaptchaEnable() == '1'){ ?>
+          <div class="field captcha-field required">
+                    <div class="control">    
+                       <div id="recaptchaProductEnquiry" class="g-recaptcha"></div>
+      
+                            <?php /* <div class="g-recaptcha" data-sitekey="<?php echo $sitekey; ?>"></div> */ ?>
+                          <div class="recaptcha-error-message validation-advice" style="display:none;" ><?php /* @escapeNotVerified */ echo __('Please verify that you are not a robot.') ?></div>
+          
+
+                           </div>
+			</div>
+           <?php //} ?>
+          <div class="actions-toolbar">
+            <div class="primary">
+              <p class="required"><em>*</em> <?php echo "Required Fields"; ?></p>
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="<?php echo ('Submit') ?>" class="action submit primary">
+                    <span><?php echo ('Submit') ?></span>
+                </button>
+            </div>
+            </div>
+        <?php echo $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    
+</form>
+</div>
+
+
+<script type="text/javascript">
+	// <![CDATA[
+  require([
+    "jquery"
+    ], function($){        
+  jQuery(".productenquiry").submit(function (event) {
+     /* var response = grecaptcha.getResponse();
+
+      if(typeof recaptchaProductEnquiry != "undefined"){
+          response = grecaptcha.getResponse(recaptchaProductEnquiry);
+      }
+
+    var msgEle = jQuery('.recaptcha-error-message');
+
+    if (typeof recaptchaProductEnquiry != "undefined" && jQuery('#recaptchaProductEnquiry').length) {
+      msgEle = jQuery('#recaptchaProductEnquiry').next('div.recaptcha-error-message');
+    }
+    
+      if (response.length == 0) {
+          msgEle.css({
+              'color': '#ff0000'
+          }).show();
+          return false; // Will stop the submission of the form
+      }else{
+      msgEle.hide();
+    }
+*/
+  }); 
+    }); 
+  //]]!> 
+</script>
+ 
+
+
+
+<script type="text/javascript">
+	// <![CDATA[
+  require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Make an enquiry',
+                buttons: false,
+                modalClass: 'productenquiry',
+                /*buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]*/
+            };
+
+            var popup = modal(options, $('#popup-mpdal'));
+           /* $("#enquire-btn").on('click',function(){ 
+                $("#popup-mpdal").modal("openModal");
+            });*/
+
+        }
+    );
+	 //]]!> 
+    </script>
+

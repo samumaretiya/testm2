@@ -1,0 +1,70 @@
+<div id="element" <?php /*data-mage-init='{"accordion":{"openedState": "active", "collapsible": true,  "active": false,"multipleCollapsible": false}}'*/ ?>>
+
+<div data-role="collapsible" class="faq" id="que">
+
+<?php
+
+if ($block->isFaqsEnabled()){ 
+		$collection = $this->getFaqsColletion();
+			if(count($collection->getData())>0){
+				?>
+	<p><?php /* @escapeNotVerified */ echo __('FREQUENTLY ASKED QUESTIONS') ?></p>
+	<ul class="faq-list">
+	<?php
+				$counter = 1;
+				foreach($collection->getData() as $key => $val)
+				{		
+				?>
+				<?php if($counter>3):?>
+				<a href="<?php echo $this->getUrl('faqs');?>" class="action primary" title="Read More" target="_blank">
+					<span>Read More</span>
+				</a>
+				<?php else: ?>
+				<li>
+					<div data-role="trigger">
+						<h3><?php echo $val['question']; ?><span class="toggle-handle"><em class="first"></em><em class="second"></em></span></h3>
+					</div>
+						<div class="ans" style="display:none">
+							<div class="ans-inner" >
+								<p>
+									<?php
+									$content = $val['answer'];
+									$om = \Magento\Framework\App\ObjectManager::getInstance();
+									$filterManager = $om->get('Magento\Cms\Model\Template\FilterProvider')->getPageFilter()->filter($content);
+									echo $filterManager;
+									?>
+								</p>
+							</div>
+						</div>
+				</li>
+				<?php endif; ?>
+	
+					
+				<?php
+					$counter++;
+				}				
+				?></ul>
+			<?php }else{ ?>
+	<p><?php /* @escapeNotVerified */ echo __('No FAQ Found...') ?></p>
+			<?php } ?>
+<?php } ?>    
+	
+<script>
+require(['jquery'],function($){
+jQuery(document).ready(function(){
+		jQuery('#que ul li:first-child').addClass('active');
+		jQuery('#que ul li:first-child').find('.ans').show();
+		jQuery('#que ul li h3').click(function(){
+			var closest_li  = jQuery(this).closest('li');
+			closest_li.siblings('li').removeClass('active');
+			closest_li.siblings('li').find('.ans').slideUp();
+			closest_li.toggleClass('active');
+			closest_li.find('.ans').slideToggle()
+		});
+	});
+});
+</script>
+
+ </div>
+ 	
+</div>

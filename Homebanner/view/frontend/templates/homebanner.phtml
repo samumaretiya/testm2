@@ -1,0 +1,77 @@
+<?php  
+if($this->isEnabled()){ ?>
+<div class="digital-homebanner-main">
+	
+	<img src="<?php echo $block->getViewFileUrl('images/loader-1.gif'); ?>" class="slider-loader">
+    <img src="<?php echo $block->getViewFileUrl('images/slider-placeholder.png'); ?>" class="slider-placeholder">
+	<div class="owl-digital-banner owl-carousel">
+		<?php foreach ($this->getLoadedBannerCollection()  as $k => $value) { 
+			if(@GetImageSize($this->getImageUrl($value->getImage()))){ ?>		 
+			<div class="item">
+				<a href="<?php echo $value->getBannerUrl()? $value->getBannerUrl(): "javascript:void(0)";?>" >
+				<img src="<?php echo $this->getImageUrl($value->getImage()); ?>" alt="<?php echo $value->getName(); ?>"/>
+				</a>
+				<?php if($value->getBannerSlogan()){?>
+				<div class="container">
+					<div class="slogan-wrapper">
+						<span class="slogan">
+							<?php echo $value->getBannerSlogan(); ?>
+						</span>
+					</div>
+				</div>
+				<?php } ?>
+				
+			</div> 
+		<?php }
+		} ?>
+	</div>
+</div>
+
+<script type="text/javascript">// <![CDATA[
+require([
+        'jquery',
+        'digital/homebanner',
+    ], function ($) {
+        jQuery(document).ready(function () {
+			var totalItems = <?php echo count($this->getLoadedBannerCollection()); ?>;
+			if (totalItems == 1) {
+				var isLooped = false;
+				var isNav = false;
+				var isAutopay=false;
+				var Isdot=false;
+			} else {
+				var isLooped = true;
+				var isNav = true;
+				var isAutopay=true;
+				var Isdot=true;
+			} 
+			jQuery(".digital-homebanner-main .owl-digital-banner").owlCarousel({ 
+				autoplay:isAutopay,
+				items : 1, 
+				smartSpeed:1500,
+				autoplayHoverPause:true,
+				loop: isLooped,
+				nav:isNav,
+				margin:0,
+				responsiveClass:true,
+				responsive:{
+					0:{
+						items:1,
+						nav:false,
+					},
+					767:{
+						items:1,
+						dots:Isdot,				
+						nav:false,			
+					},
+					1000:{
+						items:1,
+						dots:Isdot
+					}
+				}
+			});
+    });
+});
+// ]]></script>
+
+<?php }?> 

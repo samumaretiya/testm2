@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Food Needs</title>
+    </head> 
+    <body>		 
+        <referenceContainer name="content">
+            <block class="Digital\Foodneeds\Block\Index\Index" name="foodneeds_index_index" template="Digital_Foodneeds::foodneeds.phtml"/>
+        </referenceContainer>        
+    </body>
+</page>

@@ -1,0 +1,16 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+ 	<head>
+ 		<css src="Digital_Homebanner::css/owl.carousel.css"/>
+ 		<css src="Digital_Homebanner::css/owl.theme.css"/>
+ 	</head>
+    <body> 
+    	<referenceContainer name="page.main.title" remove="true"/> 
+		 <referenceContainer name="page.top">
+             <block class="Digital\Homebanner\Block\Homebanner" name="homebanner-main" template="Digital_Homebanner::homebanner.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+			<block class="Magento\Framework\View\Element\Template" name="quick.finder" template="Digital_Homebanner::quickfinder.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
+

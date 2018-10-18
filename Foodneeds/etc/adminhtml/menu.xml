@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+		<add id="Digital_Foodneeds::main" title="Manage Food Needs" module="Digital_Foodneeds" sortOrder="15" resource="Digital_Foodneeds::main" parent="Zdcs_Digital::23Digital"/>
+		
+        <add id="Digital_Foodneeds::parent" title="Manage Food Needs" module="Digital_Foodneeds" sortOrder="17" resource="Digital_Foodneeds::parent"  parent="Zdcs_Digital::23Digital" />
+		<add id="Digital_Foodneeds::foodneeds" title="Food Needs" module="Digital_Foodneeds" sortOrder="60" parent="Digital_Foodneeds::parent" action="foodneeds/foodneeds" resource="Digital_Foodneeds::foodneeds"/>
+		<add id="Digital_Foodneeds::settings" title="Settings" module="Digital_Foodneeds" sortOrder="60" parent="Digital_Foodneeds::parent" resource="Digital_Foodneeds::settings" action="adminhtml/system_config/edit/section/foodneeds" />
+    </menu>
+</config>

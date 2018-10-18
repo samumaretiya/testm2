@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<!--<tab id="digital" translate="label" sortOrder="0">
+            <label>23 Digital</label>
+        </tab> -->
+        <section id="foodneeds" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Food Needs Setting</label>
+           <tab>digital</tab>
+            <resource>Digital_Foodneeds::foodneeds</resource>
+             <group id="foodneeds" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Food Needs Setting</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Foodneeds</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                 </field>				
+             </group>
+        </section>
+    </system>
+</config>

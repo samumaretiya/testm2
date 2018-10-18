@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+		<add id="Digital_Faqs::main" title="Manage FAQs" module="Digital_Faqs" sortOrder="15" resource="Digital_Faqs::main" parent="Zdcs_Digital::23Digital"/>
+		
+        <add id="Digital_Faqs::parent" title="Manage FAQs" module="Digital_Faqs" sortOrder="17" resource="Digital_Faqs::parent"  parent="Zdcs_Digital::23Digital" />
+		<add id="Digital_Faqs::faqs" title="FAQs" module="Digital_Faqs" sortOrder="60" parent="Digital_Faqs::parent" action="faqs/faqs" resource="Digital_Faqs::faqs"/>
+		<add id="Digital_Faqs::settings" title="Settings" module="Digital_Faqs" sortOrder="60" parent="Digital_Faqs::parent" resource="Digital_Faqs::settings" action="adminhtml/system_config/edit/section/faqs" />
+    </menu>
+</config>

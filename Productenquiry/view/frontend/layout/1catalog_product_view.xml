@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+			
+		<referenceBlock name="product.info.addtocart">
+			<block class="Digital\Productenquiry\Block\Productenquiry" before="managedprint.button" name="productenquiry.button" template="enquire-button.phtml" cacheable="false"/>
+		</referenceBlock>
+		<referenceContainer name="alert.urls">
+			<block class="Digital\Productenquiry\Block\Productenquiry" name="productenquiry.list" template="productenquiry.phtml" cacheable="false"/>
+		</referenceContainer>
+	
+    </body>
+</page>
+
+
+	

@@ -1,0 +1,76 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Thank you for product Enquiry at "}}{{config path="general/store_information/name"}} @-->
+<!--@vars {
+"var comment":"Comment",
+"var email":"Customer Email",
+"var name":"Customer Name",
+"var subject":"Subject"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+                    
+
+  <table cellpadding="0" cellspacing="0" border="0" class="enquire_form_detail" style="width:100%">
+	<tr>
+		<td>
+		<h2>Hello {{var name}},</h2>
+		<p>{{trans 'Thank you for your product enquiry at '}}<a href='{{config path="web/secure/base_url"}}'>{{config path="general/store_information/name"}}</a>{{trans ', a member of our team will be in touch shortly, if you wish to contact us directly you can reach us at '}}<a href='tel:{{config path="general/store_information/phone"}}'>{{config path="general/store_information/phone"}}</a>{{trans '. The details of your enquiry are below:'}}</p>
+		</td>
+	 </tr>
+    <tr><td><h2  style="text-align:center;">Your Details</h2></td></tr>
+    <tr>
+        <td>
+			<table border="1" style="width:100%">				
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Product Name</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var product_name}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Product Code</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var product_code}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Name</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var name}}</td>
+				</tr>
+				
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Email</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var email}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Country</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var country}}</td>
+				</tr>
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>State</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var region}}</td>
+				</tr>
+				{{if postcode}}
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Postcode</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var postcode}}</td>
+				</tr>
+				{{/if}}
+
+				{{if telephone}}
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Telephone</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var telephone}}</td>
+				</tr>
+				{{/if}}
+				<tr>
+					<td style="width:250px; padding:0 0 0 10px;"><b>Comment</b></td>
+					<td style="width:250px; padding:0 0 0 10px;">{{var comment}}</td>
+				</tr>			
+			</table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

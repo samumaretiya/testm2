@@ -1,0 +1,41 @@
+<?php /* Food Needs Services */ ?>
+	<?php 
+		$helper_foodneeds = $this->helper('Digital\Foodneeds\Helper\Data');
+		$entree_collection = $helper_foodneeds->getEntreeColletion();
+		$main_course_collection = $helper_foodneeds->getMaincourseColletion();
+		//echo '<pre>'; print_r($entree_collection->getData()); echo '</pre>';
+	?>
+	<div class="food_needs_block">
+		<?php /* Choice Of Entree */ ?>
+		<div class="field choice_of_entree">
+			<label class="label" for="choice_of_entree">
+				<span><?php echo __('Choice Of Entree'); ?></span>
+			</label>
+			<div class="control">
+				<select id="choice_of_entree" name="choice_of_entree" title="<?php echo __('Choice Of Entree'); ?>" class="">
+					<option value=""><?php echo __('Choice of Entree.'); ?></option>
+					<?php foreach($entree_collection as $entree_item) { ?>
+						<option value="<?php echo $entree_item['choice_of_entree']; ?>"><?php echo $entree_item['choice_of_entree']; ?></option>
+					<?php }	?>
+				</select>		
+			</div>
+		</div>
+		<?php /* Choice Of Entree */ ?>
+
+		<?php /* Choice Of Main Course */ ?>
+		<div class="field choice_of_main_course">
+			<label class="label" for="choice_of_main_course">
+				<span><?php echo __('Choice Of Main Course'); ?></span>
+			</label>
+			<div class="control">
+				<select id="choice_of_main_course" name="choice_of_main_course" title="<?php echo __('Choice Of Main Course'); ?>" class="">
+					<option value=""><?php echo __('Choice of Main Course.'); ?></option>
+					<?php foreach($main_course_collection as $main_course) { ?>
+						<option value="<?php echo $main_course['choice_of_main_course']; ?>"><?php echo $main_course['choice_of_main_course']; ?></option>
+					<?php }	?>
+				</select>		
+			</div>
+		</div>
+		<?php /* Choice Of Main Course */ ?>
+	</div>
+<?php /* Food Needs Services */ ?>

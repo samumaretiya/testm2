@@ -1,0 +1,229 @@
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+   
+   
+    $cust_name = $this->getCustomerName(); 
+    $cust_email = $this->getCustomerEmail(); 
+    $scopeConfig = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface');
+    $captchaKey = $scopeConfig->getValue('productenquiry/view/google_captcha');
+
+?>
+
+
+<div class="row"  id="popup-mpdal" style="display:none;">
+<form class="form productenquirylist"
+      action="<?php echo $block->getFormAction() ?>"
+      id="productenquiry-form"
+      method="post"
+      data-hasrequired="<?php  echo ('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php echo ('Make an Enquiry') ?></span></legend><br />
+        <?php /*div class="field note no-label"><?= $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible Jot us a note and we’ll get back to you as quickly as possible.')) ?></div*/ ?>
+      
+         <div class="field productname">
+            <div class="control">
+              <label class="label" for="product_name"><span><?php  echo ('Product Name') ?></span></label>
+                <input  name="productname" id="productname" title="<?php  echo ('Product Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}" readonly=""/>
+            </div>
+        </div>
+
+        <div class="field product_code">
+           <div class="control">
+            <label class="label" for="product_code"><span><?php  echo ('Product SKU') ?></span></label>
+            <input name="productsku" id="product_code" title="<?php /* @escapeNotVerified */ echo ('Product SKU') ?>" value="" class="input-text" type="text" data-validate="{required:true}" readonly=""/>
+            </div>
+          </div>      
+
+         <div class="field name required">
+            <div class="control">
+              <label class="label" for="name"><span><?php echo ('Your Name') ?></span></label>
+              <span class="required"></span>
+                <input  name="name" id="cname" title="<?php  echo ('Your Name') ?>" <?php if ($this->isLoggedIn()) { ?> value="<?php echo $cust_name; ?> <?php } ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+
+        <div class="field email required">
+            <div class="control">
+              <label class="label" for="email"><span><?php echo ('Email ID') ?></span></label>
+              <span class="required"></span>
+                <input  name="emailid" id="cemail" title="<?php echo ('Email ID') ?>" <?php if ($this->isLoggedIn()) { ?> value="<?php echo $cust_email; ?>" <?php } ?> class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field telephone required">
+          
+            <div class="control">
+              <label class="label" for="telephone"><span><?php  echo ('Phone Number') ?></span></label>
+                <input  name="telephone" id="ctelephone" title="<?php  echo ('Phone Number') ?>" value=""  class="input-text" type="text" />
+            </div>
+        </div>
+
+         
+      <?php
+      $countryList=$block->getCountries();
+      $regionList=$block->getRegion();
+      ?>
+      <div class="field country">
+          <label class="label" for="country"><span><?php echo ('Country') ?></span></label>
+          <span class="required"></span>
+          <div class="control">
+              <?php echo $countryList?>
+          </div>
+      </div>
+      <div class="field region">
+          <label class="label" for="region"><span><?php  echo ('State') ?></span></label>
+          <span class="required"></span>
+          <div class="control">
+              <?php echo $regionList?>
+          </div>
+      </div>
+
+       <div class="field postcode">
+          
+            <div class="control">
+              <label class="label" for="Postcode"><span><?php  echo ('Postcode') ?></span></label>
+                <input name="postcode" id="postcode" title="<?php  echo ('Postcode') ?>" value=""  class="input-text" type="text" />
+            </div>
+        </div>
+
+        <div class="field comment required">
+            
+            <div class="control">
+              <label class="label" for="comment"><span><?php echo ('Comment') ?></span></label>
+              <span class="required"></span>
+                <textarea data-validate="{required:true}" name="comment" id="ccomment" title="<?php echo ('Comment') ?>" class="input-text" cols="5" rows="3"></textarea>
+            </div>
+        </div>
+
+         
+         <?php if($block->isCaptchaEnable() == '1'){ ?>
+          <div class="field captcha-field required">
+                    <div class="control">    
+                       <div id="recaptchaProductEnquiryList" class="g-recaptcha"></div>
+      
+                            <?php /*div class="g-recaptcha" data-callback="onSuccess" data-sitekey="<?php echo $captchaKey ?>"></div */?>     
+                          <div class="recaptcha-error-message validation-advice" style="display:none;" ><?php /* @escapeNotVerified */ echo __('Please verify that you are not a robot.') ?></div>
+          
+
+                           </div>
+
+          <div class="actions-toolbar">
+            <div class="primary">
+              <p class="required"><em>*</em> <?php echo "Required Fields"; ?></p>
+                <input type="hidden" name="hideit" id="hidden" value="" />
+                <button type="submit" title="<?php echo ('Submit') ?>" class="action submit primary">
+                    <span><?php echo ('Submit') ?></span>
+                </button>
+            </div>
+          </div>
+
+          </div>
+           <?php } ?>
+                          
+          
+       
+
+
+        <?php echo $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    
+</form>
+</div>
+
+<?php if($block->isCaptchaEnable() == '1'){ ?>
+<script type="text/javascript">
+	// <![CDATA[
+  require([
+    "jquery"
+    ], function($){ 
+  jQuery(".productenquirylist").submit(function (event) {
+      var response = grecaptcha.getResponse();
+
+      if(typeof recaptchaProductEnquiryList != "undefined"){
+          response = grecaptcha.getResponse(recaptchaProductEnquiryList);
+      }
+
+    var msgEle = jQuery('.recaptcha-error-message');
+
+    if (typeof recaptchaProductEnquiryList != "undefined" && jQuery('#recaptchaProductEnquiryList').length) {
+      msgEle = jQuery('#recaptchaProductEnquiryList').next('div.recaptcha-error-message');
+    }
+    
+      if (response.length == 0) {
+          msgEle.css({
+              'color': '#ff0000'
+          }).show();
+          return false; // Will stop the submission of the form
+      }else{
+      msgEle.hide();
+    }
+
+  }); 
+    });
+  //]]!>
+</script>
+ <?php } ?>
+
+<script type="text/javascript">
+	// <![CDATA[
+  require([
+    'jquery',
+    'jquery/ui'
+], function($) {
+  jQuery(document).ready(function(){
+    setTimeout(function(){
+      jQuery('select#country').trigger('change');
+    },10);
+    
+  });
+    jQuery(document).on('change','select#country',function() {
+    var param = $(this).val();
+    $.ajax({
+        showLoader: true,
+        url: '<?php echo $block->getStateChangeAjaxUrl() ?>',
+        data: {'country':param},
+        type: "GET",
+        dataType: 'json'
+    }).done(function (data) {
+       jQuery('.field.region .control').html(data.value);
+    });
+});
+});  
+	//]]!>
+</script>
+<script type="text/javascript">
+	// <![CDATA[
+  require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Product Enquiry Form',
+                buttons: false,
+                modalClass: 'productenquiry'
+                /*buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]*/
+            };
+
+            var popup = modal(options, $('#popup-mpdal'));
+            $(".toenquiry").on('click',function(){ 
+                $("#popup-mpdal").modal("openModal");
+            });
+
+        }
+    );
+	//]]!>
+    </script>
+
